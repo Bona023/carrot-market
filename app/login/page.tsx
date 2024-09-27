@@ -25,6 +25,13 @@ export default function LogIn() {
                     errors={[]}
                 />
                 <FormInput
+                    name="userName"
+                    type="text"
+                    placeholder="Username"
+                    required
+                    errors={[]}
+                />
+                <FormInput
                     name="password"
                     type="password"
                     placeholder="Password"
