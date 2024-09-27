@@ -22,21 +22,18 @@ export default function LogIn() {
                     type="email"
                     placeholder="Email"
                     required
-                    errors={[]}
                 />
                 <FormInput
-                    name="userName"
+                    name="username"
                     type="text"
                     placeholder="Username"
                     required
-                    errors={[]}
                 />
                 <FormInput
                     name="password"
                     type="password"
                     placeholder="Password"
                     required
-                    errors={state?.error ?? []}
                 />
                 <FormButton text="Log in" />
                 {state?.pass ? <div className="bg-green-500 text-white  font-medium  rounded-md text-center py-2">Welcome!!</div> : null}
