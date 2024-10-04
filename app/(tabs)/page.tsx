@@ -1,8 +1,28 @@
-export default function Home() {
+import ListTweets from "@/components/list-tweet";
+import db from "@/lib/db";
+
+async function getTweets() {
+    const tweets = db.tweet.findMany({
+        select: {
+            id: true,
+            tweet: true,
+            created_at: true,
+            authorName: true,
+        },
+    });
+    return tweets;
+}
+
+export default async function Home() {
+    const tweets = await getTweets();
     return (
-        <div>
-            <h1 className="text-white text-4xl">Home</h1>
-            <h2 className="text-2xl">tweet</h2>
+        <div className="p-5 flex flex-col gap-5">
+            {tweets.map((tweet) => (
+                <ListTweets
+                    key={tweet.id}
+                    {...tweet}
+                />
+            ))}
         </div>
     );
 }
