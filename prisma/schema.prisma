@@ -21,6 +21,7 @@ model User {
   SMSToken   SMSToken[]
   Tweet      Tweet[]
   Like       Like[]
+  Product    Product[]
 }
 
 model SMSToken {
@@ -49,4 +50,16 @@ model Like {
   tweet      Tweet    @relation(fields: [tweetId], references: [id], onDelete: Cascade)
   userId     Int
   tweetId    Int
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  title       String
+  price       Float
+  photo       String
+  description String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  userId      Int
 }

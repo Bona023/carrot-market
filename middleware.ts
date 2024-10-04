@@ -6,7 +6,7 @@ interface Routes {
 }
 
 const publicOnlyUrls: Routes = {
-    "/": true,
+    "/choose": true,
     "/login": true,
     "/sms": true,
     "/create-account": true,
@@ -16,9 +16,8 @@ export async function middleware(request: NextRequest) {
     const session = await getSession();
     const exists = publicOnlyUrls[request.nextUrl.pathname];
     if (!session.id) {
-        // session.id가 없다 == 로그아웃 상태
         if (!exists) {
-            return NextResponse.redirect(new URL("/", request.url));
+            return NextResponse.redirect(new URL("/choose", request.url));
         }
     } else {
         if (exists) {
