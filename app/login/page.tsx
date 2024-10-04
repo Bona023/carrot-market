@@ -25,13 +25,6 @@ export default function LogIn() {
                     errors={state?.fieldErrors.email}
                 />
                 <FormInput
-                    name="username"
-                    type="text"
-                    placeholder="Username"
-                    required
-                    errors={state?.fieldErrors.username}
-                />
-                <FormInput
                     name="password"
                     type="password"
                     placeholder="Password"
@@ -39,7 +32,6 @@ export default function LogIn() {
                     errors={state?.fieldErrors.password}
                 />
                 <FormButton text="Log in" />
-                {state === undefined ? <div className="bg-green-500 text-white  font-medium  rounded-md text-center py-2">Welcome!!</div> : null}
             </form>
             <SocialLogin />
         </div>
